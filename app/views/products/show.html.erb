@@ -1,5 +1,5 @@
 <%= @product.name %>
 <%= @product.description %>
-<%= @product.price_in_cents %>
+<%= @product.formatted_price %>
 <%= link_to "Edit", "/products/#{@product.id}/edit" %>
 <%= link_to "Back", "/products" %>
