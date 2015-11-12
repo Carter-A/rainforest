@@ -2,7 +2,8 @@
    <%= product.name %>
    <%= product.description %>
    <%= product.formatted_price %>
-   <%= link_to "Product", "/products/#{product.id}" %>
+   <%= product.id %>
+   <%= link_to "Show Product", "/products/#{product.id}" %>
 <% end %>
 
  <%= link_to "New Product", "/products/new" %>
