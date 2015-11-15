@@ -7,21 +7,54 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if flash[:notice] %>
-    <p id="notice"><%= flash[:notice] %></p>
-  <% end %>
-  <% if flash[:alert] %>
-    <p id="alert"><%= flash[:alert] %></p>
-  <% end %>
-  <%= yield %>
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">RainForest</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="">Add a New Product</a></li>
+          <li><a href=""></a></li>
+          <li><a href=""></a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="/products/new">Add a New Product</a></li>
+          <li><a href=""></a></li>
+          <li><a href=""></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-    <p class="userinfo">
-      <% if current_user %>
-        Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-      <% else %>
-        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-      <% end %>
-    </p>
+  <main>
+    <% if flash[:notice] %>
+      <p id="notice"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p id="alert"><%= flash[:alert] %></p>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+
+      <p class="userinfo">
+        <% if current_user %>
+          Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+        <% else %>
+          <%= link_to "Log in", new_session_path, class: "waves-effect waves-light btn" %> <%= link_to "Sign up", new_user_path, class: "waves-effect waves-light btn" %>
+        <% end %>
+      </p>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        © 2014 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

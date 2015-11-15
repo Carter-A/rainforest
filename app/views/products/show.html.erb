@@ -1,9 +1,10 @@
-<%= @product.name %>
-<%= @product.description %>
-<%= @product.formatted_price %>
-<%= link_to "Edit", "/products/#{@product.id}/edit" %>
 
-<h3>Reviews</h3>
+<h3><%= @product.name %></h3>
+<p>Description: <%= @product.description %></p>
+<p>Price: <%= @product.formatted_price %>$</p>
+<%= link_to "Edit", "/products/#{@product.id}/edit", class: "waves-effect waves-light btn" %>
+
+<h5>Reviews</h5>
 
   <p>Reviews for <%= @product.name %></p>
 
@@ -19,7 +20,7 @@
   <% end %>
 
   <% if current_user %>
-  <h4>New Review</h4>
+  <h5>New Review</h5>
 
   <%= form_for([@product, @review]) do |f| %>
     <% if @review.errors.any? %>
@@ -48,4 +49,4 @@
 <% end %>
 
 
-<%= link_to "Back", "/products" %>
+<%= link_to "Back", "/products", class: "waves-effect waves-light btn"  %>

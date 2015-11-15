@@ -1,9 +1,10 @@
-<% @products.each do |product| %>
-   <%= product.name %>
-   <%= product.description %>
-   <%= product.formatted_price %>
-   <%= product.id %>
-   <%= link_to "Show Product", "/products/#{product.id}" %>
-<% end %>
-
- <%= link_to "New Product", "/products/new" %>
+<ul class="collection with-header">
+  <li class="collection-header"><h4>Products</h4></li>
+  <% @products.each do |product| %>
+    <li class="collection-item"><div><%= product.name %>
+      <%= link_to "/products/#{product.id}", class: "secondary-content" do %>
+      <i class="material-icons">send</i>
+    <% end %>
+  </div></li>
+  <% end %>
+</ul>
