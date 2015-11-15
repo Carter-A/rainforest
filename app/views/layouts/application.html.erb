@@ -10,17 +10,25 @@
   <header>
     <nav>
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">RainForest</a>
+        <a href="/products" class="brand-logo">RainForest</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="">Add a New Product</a></li>
-          <li><a href=""></a></li>
+          <li><a href="/products/new">Add a New Product</a></li>
+          <li><% if current_user %>
+            Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+          <% else %>
+            <%= link_to "Log in", new_session_path, class: "waves-effect waves-light btn" %> <%= link_to "Sign up", new_user_path, class: "waves-effect waves-light btn" %>
+          <% end %></li>
           <li><a href=""></a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="/products/new">Add a New Product</a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
+          <li><% if current_user %>
+            <%= link_to "Log out", session_path("current"), :method => :delete, class: "waves-effect waves-light btn" %>
+          <% else %>
+            <%= link_to "Log in", new_session_path, class: "waves-effect waves-light btn" %> <%= link_to "Sign up", new_user_path, class: "waves-effect waves-light btn" %>
+          <% end %></li>
+          <li></li>
         </ul>
       </div>
     </nav>
@@ -38,11 +46,7 @@
       <%= yield %>
 
       <p class="userinfo">
-        <% if current_user %>
-          Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-        <% else %>
-          <%= link_to "Log in", new_session_path, class: "waves-effect waves-light btn" %> <%= link_to "Sign up", new_user_path, class: "waves-effect waves-light btn" %>
-        <% end %>
+
       </p>
     </div>
   </main>
