@@ -4,9 +4,7 @@
 <p>Price: <%= @product.formatted_price %>$</p>
 <%= link_to "Edit", "/products/#{@product.id}/edit", class: "waves-effect waves-light btn" %>
 
-<h5>Reviews</h5>
-
-  <p>Reviews for <%= @product.name %></p>
+  <h5>Reviews for <%= @product.name %></h5>
 
   <% @product.reviews.each do |review| %>
     <p>
@@ -40,7 +38,7 @@
       <%= f.text_area :comment %>
     </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Add Comment", class: "waves-effect waves-light btn" %>
     </div>
   <% end %>
 
