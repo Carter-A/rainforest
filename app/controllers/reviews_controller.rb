@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
 
   def create
     @reviews = @product.reviews
-    @review = @product.reviews.create(review_params)
+    @review = @product.reviews.create(review_params.merge(:user => current_user))
     @review.user = current_user
     if request.xhr?
       render partial: 'products/review', :locals => {:review => @review}, status => :created
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:comment, :product_id, :user_id)
+    params.require(:review).permit(:comment, :product_id)
   end
 
   def load_product

@@ -1,11 +1,11 @@
 <p>
-  <%= review.comment %>
-  <% if @product.reviews %>
-  <%= link_to "Delete", "/products/#{review.product_id}/reviews/#{review.id}", method: :delete %>
-  <br>
-  <% end %>
+  <p><%= review.comment %></p>
+  <p>Added on: <%= review.created_at %></p>
   <% if review.user != nil %>
     <em> by <%= review.user.name %></em>
-    Added on: <%= review.created_at %>
   <% end %>
+  <% if review.user == current_user %>
+    <%= link_to "Delete", "/products/#{review.product_id}/reviews/#{review.id}", method: :delete %>
+  <% end %>
+  <br>
 </p>
