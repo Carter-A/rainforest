@@ -8,10 +8,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @reviews = @product.reviews
-    @review = @product.reviews.create(review_params.merge(:user => current_user))
+    @reviews = @product.reviews.persisted
+    @review = @product.reviews.build(review_params.merge(:user => current_user))
     @review.user = current_user
     if request.xhr?
+      @review.save
       render partial: 'products/review', :locals => {:review => @review}, status => :created
     else
       render 'products/show'

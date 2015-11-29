@@ -1,11 +1,14 @@
-<p>
-  <p><%= review.comment %></p>
-  <p>Added on: <%= review.created_at %></p>
-  <% if review.user != nil %>
-    <em> by <%= review.user.name %></em>
+<div class = "review">
+  <% if review.comment == nil %>
+    <!-- Do not display review if content is empty, prevents showing empty reviews -->
+  <% else %>
+    <p><%= review.comment %></p>
+    <p>Added on: <%= review.created_at %></p>
+    <% if review.user != nil %>
+      <em> by <%= review.user.name %></em>
+    <% end %>
+    <% if review.user == current_user %>
+      <%= link_to "Delete", "/products/#{review.product_id}/reviews/#{review.id}", method: :delete %>
+    <% end %>
   <% end %>
-  <% if review.user == current_user %>
-    <%= link_to "Delete", "/products/#{review.product_id}/reviews/#{review.id}", method: :delete %>
-  <% end %>
-  <br>
-</p>
+</div>

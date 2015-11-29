@@ -7,12 +7,11 @@
 <h5>Reviews for <%= @product.name %></h5>
 <div class="reviews">
   <% if @product.reviews.persisted.any? %>
-    <%= render :partial => 'review', collection: @reviews %>
+      <%= render partial: 'review', collection: @reviews %>
   <% else %>
     <p>Be the first to review this product!</p>
   <% end %>
 </div>
 <%= render 'new_review', :locals => {:review => @review}%>
-
 
 <%= link_to "Back", "/products", class: "waves-effect waves-light btn"  %>
