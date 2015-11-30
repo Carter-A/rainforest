@@ -17,4 +17,9 @@
 //= require_tree .
 $(document).ready(function(){
   $(".button-collapse").sideNav();
-})
+
+  // $(".delete_review").on("click", function(){
+  //   $(this).parent().fadeOut();
+  // });
+
+});

@@ -8,7 +8,7 @@
       <em> by <%= review.user.name %></em>
     <% end %>
     <% if review.user == current_user %>
-      <%= link_to "Delete", "/products/#{review.product_id}/reviews/#{review.id}", method: :delete %>
+      <%= link_to "Delete", "/products/#{review.product_id}/reviews/#{review.id}", method: :delete, remote: true, class: "delete_review" %>
     <% end %>
   <% end %>
 </div>
