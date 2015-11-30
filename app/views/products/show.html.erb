@@ -6,7 +6,7 @@
 
 <h5>Reviews for <%= @product.name %></h5>
 <div class="reviews">
-  <% if @product.reviews.persisted.any? %>
+  <% if @product.reviews.any? %>
       <%= render partial: 'review', collection: @reviews %>
   <% else %>
     <p>Be the first to review this product!</p>

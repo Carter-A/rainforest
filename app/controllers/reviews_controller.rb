@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @reviews = @product.reviews.persisted
+    @reviews = @product.reviews
     @review = @product.reviews.build(review_params.merge(:user => current_user))
     @review.user = current_user
     if request.xhr?
