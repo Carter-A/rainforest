@@ -13,9 +13,9 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if request.xhr?
       @review.save
-      render partial: 'products/review', :locals => {:review => @review}, status => :created
     else
-      render 'products/show'
+      @review.save
+      redirect_to 'products/show'
     end
   end
 

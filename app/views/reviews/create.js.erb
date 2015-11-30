@@ -1,0 +1,2 @@
+$(".review_form").find('textarea').removeClass('uneditable-input').removeAttr('disabled', 'disabled').val('');
+$('.reviews').append("<%= escape_javascript(render partial: '/products/review', :locals => {:review => @review}) %>");
